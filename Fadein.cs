@@ -11,7 +11,6 @@ public class Fadein : MonoBehaviour
     {
         limitTime = 0f;
 
-        // 最初は5秒かけてフェードイン
         m_fade.FadeIn(5.0f);
     }
 
@@ -23,7 +22,6 @@ public class Fadein : MonoBehaviour
         {
             blackOutStarted = true;
 
-            // 一瞬で黒画面
             m_fade.BlackOut();
         }
     }

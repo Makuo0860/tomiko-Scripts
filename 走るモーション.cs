@@ -33,28 +33,16 @@ public class 走るモーション : MonoBehaviour
 
     void Update()
     {
-        // カメラの前
         Vector3 forward = cameraTransform.forward;
         forward.y = 0;
         forward.Normalize();
-
-        // カメラの右
+        
         Vector3 right = cameraTransform.right;
         right.y = 0;
         right.Normalize();
 
-
-        // =========================
-        // しゃがみ・走り判定
-        // =========================
-
         bool isCrouch = Input.GetKey(KeyCode.LeftShift);
         bool isRun = Input.GetKey(KeyCode.LeftControl) && !isCrouch;
-
-
-        // =========================
-        // W
-        // =========================
 
         if (Input.GetKey(KeyCode.W))
         {
@@ -89,11 +77,6 @@ public class 走るモーション : MonoBehaviour
             controller.Move(forward * speed * Time.deltaTime);
         }
 
-
-        // =========================
-        // S
-        // =========================
-
         if (Input.GetKey(KeyCode.S))
         {
             float speed = walkSpeed;
@@ -126,11 +109,6 @@ public class 走るモーション : MonoBehaviour
 
             controller.Move(-forward * speed * Time.deltaTime);
         }
-
-
-        // =========================
-        // A
-        // =========================
 
         if (Input.GetKey(KeyCode.A))
         {
@@ -165,11 +143,6 @@ public class 走るモーション : MonoBehaviour
             controller.Move(-right * speed * Time.deltaTime);
         }
 
-
-        // =========================
-        // D
-        // =========================
-
         if (Input.GetKey(KeyCode.D))
         {
             float speed = walkSpeed;
@@ -203,11 +176,6 @@ public class 走るモーション : MonoBehaviour
             controller.Move(right * speed * Time.deltaTime);
         }
 
-
-        // =========================
-        // 移動していないとき
-        // =========================
-
         if (!Input.GetKey(KeyCode.W) &&
             !Input.GetKey(KeyCode.S) &&
             !Input.GetKey(KeyCode.A) &&
@@ -220,11 +188,6 @@ public class 走るモーション : MonoBehaviour
             // Shiftを押していればしゃがみ状態
             anim.SetBool("squat", isCrouch);
         }
-
-
-        // =========================
-        // プレイヤーの向き
-        // =========================
 
         Vector3 direction = Vector3.zero;
 
@@ -261,11 +224,6 @@ public class 走るモーション : MonoBehaviour
                 rotateSpeed * Time.deltaTime
             );
         }
-
-
-        // =========================
-        // 重力
-        // =========================
 
         if (controller.isGrounded)
         {
